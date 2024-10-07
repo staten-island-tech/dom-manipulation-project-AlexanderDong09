@@ -4,9 +4,6 @@ const DOMSelectors = {
   items: document.querySelectorAll("li"),
 };
 
-console.log(DOMSelectors.description);
-console.log(DOMSelectors.items);
-
 // define
 function addElement() {
   // find element with queryselector
@@ -20,5 +17,6 @@ function addElement() {
     // get info from the form
   });
 }
+
 //call
 addElement();
