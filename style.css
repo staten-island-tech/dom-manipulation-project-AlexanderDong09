@@ -13,6 +13,7 @@ html,
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+    
   }
 
 .dom{
@@ -20,8 +21,14 @@ html,
     font-family: "Oswald", sans-serif;
     padding: 1rem;
     text-align: center;
+
 }
 
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
 .website-title{
     text-align: center;
     font-size: 1.5rem;
@@ -36,6 +43,18 @@ html,
     background: radial-gradient(circle, rgba(42,24,166,0.3) 0%, rgba(68,4,94,1) 100%); 
 }
 
-.dom{
-    
+.card{
+    width: 20%;
+    border: solid;
+    border-radius: 50px;
+    margin: 4rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+
+
+    justify-content: center;
+  
+    transition: all 0.3s ease-in-out; 
+    color: black;
 }

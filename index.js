@@ -1,31 +1,38 @@
 const DOMSelectors = {
   header: document.querySelector("h1"),
-  description: document.querySelector(".card-desc"),
   items: document.querySelectorAll("li"),
-  container: document.querySelector("container"),
+  cardHeader: document.querySelector(".card-header"),
+  button: document.querySelector(".btn"),
+  container: document.querySelector(".container"),
+  text: document.getElementById("value"),
+  image: document.getElementById("img"),
 };
 
-// define
-function addElement() {
-  // find element with queryselector
-  let form = document.querySelector("form");
-  // listen for click event
-  form.addEventListener("submit", function (event) {
-    // prevent default behavior
-    event.preventDefault();
-    // logging click event
-    console.log(event.target);
-    // get info from the form
-  });
+function addElement(card) {
+  DOMSelectors.container.insertAdjacentHTML(
+    "beforeend",
+    `<div class="card"><h2 class="header">${card}</h2></div>`
+  );
 }
 
-//call
-addElement();
+DOMSelectors.button.addEventListener("click", function (insert) {
+  insert.preventDefault();
+  addElement(DOMSelectors.text.value);
+});
 
-DOMSelectors.container.insertAdjacentHTML(
-  "beforeend",
-  `<div class="card"><h2 class="header">${"hi"}</h2></div>`
-);
+// DOMSelectors.button.addEventListener("click", function (insert) {
+//   insert.preventDefault();
+
+//   const inputValue = DOMSelectors.text.value.trim(); // Get and trim the input value
+
+//   // Check if the input value is not empty
+//   if (inputValue) {
+//     addElement(inputValue);
+//     DOMSelectors.text.value = ''; // Clear the input field after adding the card
+//   } else {
+//     alert("Please enter some text!"); // Optional: alert the user
+//   }
+// });
 
 // event listener for form
 //get values from form for widget object
