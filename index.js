@@ -1,6 +1,5 @@
 const DOMSelectors = {
   header: document.querySelector("h1"),
-  items: document.querySelectorAll("li"),
   cardHeader: document.querySelector(".card-header"),
   button: document.querySelector(".btn"),
   container: document.querySelector(".container"),
@@ -8,10 +7,10 @@ const DOMSelectors = {
   image: document.getElementById("img"),
 };
 
-function addElement(card) {
+function addElement(card, img) {
   DOMSelectors.container.insertAdjacentHTML(
     "beforeend",
-    `<div class="card"><h2 class="header">${card}</h2></div>`
+    `<div class="card"><h2 class="header">${card}</h2><img src="${img}"></div>`
   );
 }
 
@@ -19,11 +18,13 @@ DOMSelectors.button.addEventListener("click", function (insert) {
   insert.preventDefault();
 
   const inputValue = DOMSelectors.text.value.trim(); // remove whitespace
+  const imageLink = DOMSelectors.image.value;
 
   // make sure they didnt input nothing
   if (inputValue) {
-    addElement(inputValue);
+    addElement(inputValue, imageLink);
     DOMSelectors.text.value = "";
+    DOMSelectors.image.value = "";
   } else {
     alert("please enter some text into the form.");
   }
