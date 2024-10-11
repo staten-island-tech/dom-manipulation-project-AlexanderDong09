@@ -17,22 +17,17 @@ function addElement(card) {
 
 DOMSelectors.button.addEventListener("click", function (insert) {
   insert.preventDefault();
-  addElement(DOMSelectors.text.value);
+
+  const inputValue = DOMSelectors.text.value.trim(); // remove whitespace
+
+  // make sure they didnt input nothing
+  if (inputValue) {
+    addElement(inputValue);
+    DOMSelectors.text.value = "";
+  } else {
+    alert("please enter some text into the form.");
+  }
 });
-
-// DOMSelectors.button.addEventListener("click", function (insert) {
-//   insert.preventDefault();
-
-//   const inputValue = DOMSelectors.text.value.trim(); // Get and trim the input value
-
-//   // Check if the input value is not empty
-//   if (inputValue) {
-//     addElement(inputValue);
-//     DOMSelectors.text.value = ''; // Clear the input field after adding the card
-//   } else {
-//     alert("Please enter some text!"); // Optional: alert the user
-//   }
-// });
 
 // event listener for form
 //get values from form for widget object
