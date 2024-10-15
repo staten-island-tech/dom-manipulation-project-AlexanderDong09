@@ -21,8 +21,20 @@ html,
     font-family: "Oswald", sans-serif;
     padding: 1rem;
     text-align: center;
-
 }
+
+input[type="url"]{
+    width: 100%; 
+    max-width: 495px; 
+}
+
+
+
+.btn{
+    margin-top: 3px;
+}
+
+
 
 .container{
     display: flex;
@@ -55,6 +67,14 @@ html,
     flex-direction: column;
     justify-content: center;
     color: black;
+}
+
+.header{
+    text-align: center;
+    text-anchor: start;
+    font-size: 1em;
+    padding-bottom: 1rem;
+    justify-content: center;
 }
 
 img{
