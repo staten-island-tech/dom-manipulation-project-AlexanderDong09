@@ -6,25 +6,19 @@ const DOMSelectors = {
   image: document.getElementById("img"),
 };
 
-function createCard() {
+function createCard(event) {
   // does multiple things, calls all the functions below
+  event.preventDefault(); // make sures default behavior is prevented
 
-  // starts with
+  // starts with getting input from user
+  input();
 
-  // then inserts the object
+  // then inserts the object, clearing the form afterwards
   DOMSelectors.button.addEventListener("click", function () {
     insertObject();
   });
 
-  // adds a remove button to each card
-}
-
-function insertObject(card, img) {
-  // inserts the card using insertAdjacentElement, two variables being card and img
-  DOMSelectors.container.insertAdjacentElement(
-    "beforeend",
-    `<div class="card"><h2 class="header">${card}</h2><img src="${img}</div>`
-  );
+  clearForm();
 }
 
 function input() {
@@ -41,11 +35,25 @@ function input() {
   }
 }
 
+function insertObject(card, img) {
+  // inserts the card using insertAdjacentElement, two variables being card and img
+  DOMSelectors.container.insertAdjacentElement(
+    "beforeend",
+    `<div class="card"><h2 class="header">${card}</h2><img src="${img}</div>`
+  );
+}
+
 function clearForm() {
   // simple function, clears the form
   document.querySelector("form").reset();
 }
 
-function removeObject() {
-  // figure out how tf to do this lmao
+function removeCard() {
+  DOMSelectors.container.addEventListener("click", function (event) {
+    if (event.target.classList.contains("delete-btn")) {
+      // check if what's being clicked is the delete button
+      const card = event.target.closest(".card"); // find the closest parent card of the delete button that was clicked
+      card.remove();
+    }
+  });
 }

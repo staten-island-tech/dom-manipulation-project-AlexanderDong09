@@ -38,20 +38,10 @@ function clearForm() {
 
 function removeCard() {
   DOMSelectors.container.addEventListener("click", function (event) {
-    // check if what's being clicked is the delete button
-
-    if (event.target.classList.contains("container")) {
-      DOMSelectors.container.removeChild(event.target);
-    }
-  });
-}
-
-function remove() {
-  DOMSelectors.container.addEventListener("click", function (event) {
-    //if i click something in the container class
-    if (event.target.classList.contains("box")) {
-      //and the div class = box
-      DOMSelectors.container.removeChild(event.target); //then remove that child from the container div
+    if (event.target.classList.contains("delete-btn")) {
+      // check if what's being clicked is the delete button
+      const card = event.target.closest(".card"); // find the closest parent card of the delete button that was clicked
+      card.remove();
     }
   });
 }
