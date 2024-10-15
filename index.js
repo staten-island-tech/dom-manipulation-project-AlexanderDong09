@@ -6,40 +6,31 @@ const DOMSelectors = {
   image: document.getElementById("img"),
 };
 
-function createCard(event) {
+function createCard() {
   // does multiple things, calls all the functions below
-  event.preventDefault(); // make sures default behavior is prevented
+  DOMSelectors.button.addEventListener("click", function (event) {
+    event.preventDefault();
 
-  // starts with getting input from user
-  input();
+    const inputValue = DOMSelectors.text.value;
+    const imageLink = DOMSelectors.image.value;
 
-  // then inserts the object, clearing the form afterwards
-  DOMSelectors.button.addEventListener("click", function () {
-    insertObject();
+    if (inputValue === "" || imageLink === "") {
+      alert("Both fields are required!");
+      clearForm();
+      return; // if both fields are emtpy,stop execution
+    }
+
+    insertObject(inputValue, imageLink);
+    clearForm();
+
+    removeCard();
   });
-
-  clearForm();
-}
-
-function input() {
-  // this gets input from the forms, makes sure they're not empty
-
-  // might be able to just be put into createCard(), but we'll see
-
-  const inputValue = DOMSelectors.text.value.trim();
-  const imageLink = DOMSelectors.image.value;
-
-  if (inputValue === "" || imageLink === "") {
-    alert("Both fields are required!");
-    return; // if both fields are emtpy,stop execution
-  }
 }
 
 function insertObject(card, img) {
-  // inserts the card using insertAdjacentElement, two variables being card and img
-  DOMSelectors.container.insertAdjacentElement(
+  DOMSelectors.container.insertAdjacentHTML(
     "beforeend",
-    `<div class="card"><h2 class="header">${card}</h2><img src="${img}</div>`
+    `<div class="card"><h2 class="header">${card}</h2><img src="${img}"><button class="delete-btn" type="button">delete</button></div>`
   );
 }
 
@@ -52,8 +43,9 @@ function removeCard() {
   DOMSelectors.container.addEventListener("click", function (event) {
     if (event.target.classList.contains("delete-btn")) {
       // check if what's being clicked is the delete button
-      const card = event.target.closest(".card"); // find the closest parent card of the delete button that was clicked
-      card.remove();
+      event.target.closest(".card").remove(); // find the closest parent card of the delete button that was clicked
     }
   });
 }
+
+createCard();

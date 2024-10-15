@@ -7,30 +7,32 @@ const DOMSelectors = {
   image: document.getElementById("img"),
 };
 
+function createCard() {
+  DOMSelectors.button.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    const inputValue = DOMSelectors.text.value.trim(); // remove whitespace
+    const imageLink = DOMSelectors.image.value;
+
+    if (inputValue === "" || imageLink === "") {
+      alert("Both fields are required!");
+      clearForm();
+      return; // if both fields are emtpy,stop execution
+    }
+
+    addElement(inputValue, imageLink);
+    clearForm();
+
+    removeCard();
+  });
+}
+
 function addElement(card, img) {
   DOMSelectors.container.insertAdjacentHTML(
     "beforeend",
     `<div class="card"><h2 class="header">${card}</h2><img src="${img}"><button class="delete-btn" type="button">delete</button></div>`
   );
 }
-
-DOMSelectors.button.addEventListener("click", function (event) {
-  event.preventDefault();
-
-  const inputValue = DOMSelectors.text.value.trim(); // remove whitespace
-  const imageLink = DOMSelectors.image.value;
-
-  if (inputValue === "" || imageLink === "") {
-    alert("Both fields are required!");
-    clearForm();
-    return; // if both fields are emtpy,stop execution
-  }
-
-  addElement(inputValue, imageLink);
-  clearForm();
-
-  removeCard();
-});
 
 function clearForm() {
   document.querySelector("form").reset();
@@ -46,6 +48,7 @@ function removeCard() {
   });
 }
 
+run();
 // event listener for form
 //get values from form for widget object
 // create card and insert it
