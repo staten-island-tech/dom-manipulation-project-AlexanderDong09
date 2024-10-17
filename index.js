@@ -4,6 +4,8 @@ const DOMSelectors = {
   container: document.querySelector(".container"),
   text: document.getElementById("value"),
   image: document.getElementById("img"),
+  bg: document.getElementById("background"),
+  opacity: document.getElementById("opacity"),
 };
 
 function createCard() {
@@ -13,24 +15,31 @@ function createCard() {
 
     const inputValue = DOMSelectors.text.value;
     const imageLink = DOMSelectors.image.value;
+    const bgColor = DOMSelectors.bg.value;
+    const colorOpacity = DOMSelectors.opacity.value;
 
-    if (inputValue === "" || imageLink === "") {
+    if (
+      inputValue === "" ||
+      imageLink === "" ||
+      bgColor === "" ||
+      colorOpacity === ""
+    ) {
       alert("Both fields are required!");
       clearForm();
       return; // if both fields are emtpy,stop execution
     }
 
-    insertObject(inputValue, imageLink);
+    insertObject(inputValue, imageLink, bgColor, colorOpacity);
     clearForm();
 
     removeCard();
   });
 }
 
-function insertObject(card, img) {
+function insertObject(card, img, bgColor) {
   DOMSelectors.container.insertAdjacentHTML(
     "beforeend",
-    `<div class="card"><h2 class="header">${card}</h2><img src="${img}"><button class="delete-btn" type="button">delete</button></div>`
+    `<div class="card" style="background: ${bgColor}"><h2 class="header">${card}</h2><img src="${img}"><button class="delete-btn" type="button">delete</button></div>`
   );
 }
 

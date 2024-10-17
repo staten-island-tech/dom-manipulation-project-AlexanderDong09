@@ -14,11 +14,23 @@
     <div class="forms">
       <form action="">
         <label for="text">enter a name for your card</label>
+        <br>
         <input type="text" id="value" required />
-        <br />
+        <br /><br />
         <label for="url">enter a link for an image you'd like to put</label>
-        <input type="url" id="img" placeholder="https://coolimages.com/totallyawesomesauceimage.jpg" required />
         <br />
+        <input type="url" id="img" placeholder="https://coolimages.com/totallyawesomesauceimage.jpg" required />
+        <br /><br />
+        <label for="color">choose a background color for your card</label>
+        <br />
+        <input type="color" id="background">
+        <br /><br>
+        <label for="opacitySlider">set the opacity for the card background (optional)</label>
+        <br>
+        <input type="range" id="opacity">
+        <br>
+        <label for="opacitySlider">Opacity: <span id="opacityValue">1</span></label>
+        <br /><br>
         <button class="btn" type="submit">enter</button>
       </form>
     </div>
