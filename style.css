@@ -55,8 +55,9 @@ input[type="url"]{
     margin-top: 1%;
     border: solid;
     border-radius: 50px;
-    background: radial-gradient(circle, rgba(42,24,166,0.3) 0%, rgba(68,4,94,1) 100%); 
 }
+
+
 
 .card{
     width: 25%;
@@ -84,3 +85,49 @@ img{
     
 }
 
+.container{
+    padding: 1rem;
+    margin: 2rem;
+    text-align: center;
+    border: solid;
+    border-radius: 50px;
+}
+
+.gallery-title{
+    text-align: center;
+    font-size: 1rem;
+    font-family: "Oswald", sans-serif;
+    color: black;
+    text-decoration: underline;
+    width: 75%;
+}
+
+.delete-btn{
+    border: 0;
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
+  border-radius: 10px;
+  background-color: rgba(220, 0, 0, 1);
+  background-image: linear-gradient(
+    to top left,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.2) 30%,
+    rgba(0, 0, 0, 0);
+  );
+box-shadow:
+    inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+} 
+.delete-btn:hover {
+    background-color: rgba(255, 0, 0, 1);
+  }
+  
+  .delete-btn:active {
+    box-shadow:
+      inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+      inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+  }
